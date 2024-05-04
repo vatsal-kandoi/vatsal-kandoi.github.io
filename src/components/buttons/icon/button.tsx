@@ -1,24 +1,44 @@
 import * as React from "react";
-import Button, { IButtonProps } from "../button/button";
-import { IconContainer } from "./styles";
+import { useTheme } from "styled-components";
+import { Theme } from "../../../interfaces";
+import { Container, IconContainer, createRippleEffectForButton } from "./styles";
 import "../styles.css"
 
-interface IIconButtonProps extends IButtonProps {
-    /** Size of the icon button */
-    size?: "small" | "medium" | "large";
+export interface IButtonProps extends Omit<React.HTMLAttributes<HTMLButtonElement>, "size" | "onClick"> {
+    /** Handler to be triggered on button click */
+    onClick: () => void;
+    children?: React.ReactElement;
+    /** Size of the icon */
+    size?: "small" | "medium" | "large"
 }
 
-const IconButton: React.FC<IIconButtonProps> = (props) => {
+const Button: React.FC<IButtonProps> = (props) => {
+    const theme = useTheme() as Theme;
+    const buttonRef = React.useRef<HTMLButtonElement>(null);
 
-    const { size, children, style, ...remainingProps} = props;
-    
+    const {onClick, children, size, ...remainingProps} = props;
+
+    const click = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        if (buttonRef?.current === null) return;
+        let x = e.nativeEvent.offsetX;
+        let y = e.nativeEvent.offsetY;
+
+        createRippleEffectForButton(x, y, theme, buttonRef?.current);
+
+        if(onClick !== undefined) {
+            onClick();
+        }
+    }
+
     return (
-        <Button style={{...style, borderRadius: "50%"}} {...remainingProps}>
-            <IconContainer $size={size || "small"}>
-                {children}
+        <Container onClick={click}
+            ref={buttonRef}
+            {...remainingProps}>
+            <IconContainer $size={size}>
+                {children || <></>}
             </IconContainer>
-        </Button>
+        </Container>
     );
 }
 
-export default IconButton;
+export default Button;

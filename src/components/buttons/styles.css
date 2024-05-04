@@ -6,17 +6,17 @@
         height: 0px;
     }
     to {
-        width: 2rem;
-        height: 2rem;
+        width: 10rem;
+        height: 10rem;
         opacity: 0;
     }    
 }
 
 .button-click-ripple {
     position: absolute;
-    width: 2rem;
-    height: 2rem;
+    width: 10rem;
+    height: 10rem;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    animation: btnClickRippleEffect 0.3s ease-out;
+    animation: btnClickRippleEffect 0.5s ease-out;
 }

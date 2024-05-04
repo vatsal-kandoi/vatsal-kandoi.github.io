@@ -13,7 +13,7 @@ const Container = styled.div.attrs<{ $elevation?: number, $square?: boolean }>((
     box-shadow: ${props => getBoxShadowForLayer(props.$elevation || 0)};
     background-color: ${props => (props.theme as Theme).palette.background};
     background-image: ${props => getBackgroundImageForLayer(props.$elevation || 0, (props.theme as Theme).mode)};
-    border-radius: ${props => (props.$square || false) ? "1.5rem" : "0rem"};
+    border-radius: ${props => (props.$square || false) ? "0.25rem" : "0rem"};
 `
 
 export { Container };

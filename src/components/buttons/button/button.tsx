@@ -4,10 +4,10 @@ import { Theme } from "../../../interfaces";
 import { Container, createRippleEffectForButton } from "./styles";
 import "../styles.css"
 
-export interface IButtonProps extends Omit<React.HTMLAttributes<HTMLButtonElement>, "size" | "onClick"> {
+export interface IButtonProps extends Omit<React.HTMLAttributes<HTMLButtonElement>, "onClick"> {
     /** Handler to be triggered on button click */
     onClick: () => void;
-    children: React.ReactElement;
+    children?: React.ReactElement;
 }
 
 const Button: React.FC<IButtonProps> = (props) => {
@@ -30,8 +30,9 @@ const Button: React.FC<IButtonProps> = (props) => {
 
     return (
         <Container onClick={click}
+            ref={buttonRef}
             {...remainingProps}>
-            {children}
+            {children || <></>}
         </Container>
     );
 }
