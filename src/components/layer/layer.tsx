@@ -10,10 +10,10 @@ interface ILayerProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Layer: React.FC<ILayerProps> = (props) => {
-    const { elevation, children, square } = props;
+    const { elevation, children, square, ...remainingProps } = props;
 
     return (
-        <Container $elevation={elevation || 0} $square={square || false} {...props}>
+        <Container $elevation={elevation || 0} $square={square || false} {...remainingProps}>
             {children || <></>}
         </Container>
     );
