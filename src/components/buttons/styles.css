@@ -1,0 +1,22 @@
+/* Raw CSS files to append ripple on clicks */
+
+@keyframes btnClickRippleEffect {
+    from {
+        width: 0px;
+        height: 0px;
+    }
+    to {
+        width: 2rem;
+        height: 2rem;
+        opacity: 0;
+    }    
+}
+
+.button-click-ripple {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    animation: btnClickRippleEffect 0.3s ease-out;
+}

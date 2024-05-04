@@ -1,17 +1,19 @@
 import * as React from "react";
 import { Container } from "./styles";
 
-interface ILayerProps extends React.HTMLProps<HTMLDivElement> {
+interface ILayerProps extends React.HTMLAttributes<HTMLDivElement> {
     /** Defines the elevation of the material UI layer */
-    elevation?: number
+    elevation?: number;
+    /** True if the vorders needs to be curved */
+    square?: boolean;
     children?: React.ReactElement | React.ReactElement[];
 }
 
 const Layer: React.FC<ILayerProps> = (props) => {
-    const { elevation, children } = props;
+    const { elevation, children, square } = props;
 
     return (
-        <Container $elevation={elevation || 0} {...props}>
+        <Container $elevation={elevation || 0} $square={square || false} {...props}>
             {children || <></>}
         </Container>
     );

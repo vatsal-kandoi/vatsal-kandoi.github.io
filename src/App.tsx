@@ -10,7 +10,7 @@ const App: React.FC<{}> = () => {
   return (
       <ThemeProviderContext.Provider value={themeContextValue}>
         <ThemeProvider theme={theme}>
-          <Layer>
+          <Layer style={{minHeight: "100vh"}}>
             <></>
           </Layer>
         </ThemeProvider>
