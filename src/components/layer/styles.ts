@@ -14,6 +14,7 @@ const Container = styled.div.attrs<{ $elevation?: number, $square?: boolean }>((
     background-color: ${props => (props.theme as Theme).palette.background};
     background-image: ${props => getBackgroundImageForLayer(props.$elevation || 0, (props.theme as Theme).mode)};
     border-radius: ${props => (props.$square || false) ? "0.25rem" : "0rem"};
+    color: ${props => (props.theme as Theme).palette.text.background}
 `
 
 export { Container };
