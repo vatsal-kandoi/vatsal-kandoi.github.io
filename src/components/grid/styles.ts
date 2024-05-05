@@ -8,6 +8,7 @@ const GridContainer = styled.div.attrs<{
     $spacing: props.$spacing || 0,
 }))`
     width: 100%;
+    box-sizing: border-box;
     height: 100%;
     background-color: transparent;
     display: flex;
@@ -30,11 +31,10 @@ const GridItem = styled.div.attrs<{
     $sm: props.$sm,    
 }))`
     height: 100%;
+    box-sizing: border-box;
     background-color: transparent;
     display: block;
-    flex-basis: 100%;
-    flex-grow: 0;
-    flex-direction: row;
+    flex: 1;
     ${props => generateBreakpoints(props.theme as Theme, "max-width", {
         xs: `${props.$xs}%`,
         sm: `${props.$sm}%`,

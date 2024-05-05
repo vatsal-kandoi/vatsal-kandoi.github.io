@@ -11,14 +11,14 @@ export function generateBreakpoints(theme: Theme, cssProp: string, valueMap: {
     xl: string
 }) {
     let mediaQueries = "";
-
-    Object.keys(theme.breakpoints).forEach((breakpoint: string) => {
-        mediaQueries += `
-            @media screen and (max-width: ${theme.breakpoints[breakpoint as keyof Breakpoints]}px) {
+    
+    ["xs", "sm", "md", "lg", "xl"].forEach((breakpoint: string) => {
+        mediaQueries += `        
+            @media only screen and (min-width: ${theme.breakpoints[breakpoint as keyof Breakpoints]}px) {
                 ${cssProp}: ${valueMap[breakpoint as keyof Breakpoints]};
             }      
         `
     });
 
-      return mediaQueries;
+    return mediaQueries;
 };

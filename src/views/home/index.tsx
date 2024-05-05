@@ -1,20 +1,14 @@
 import React from "react";
 import Page from "../base/page";
-import Grid from "../../components/grid/grid";
+import Stack from "../../components/stack/stack";
 
 const Home: React.FC = () => {
 
     return (
         <Page>
-            <Grid container={true} spacing={1}>
-                <Grid item={true} xs={12} md={5}>
-                    <>1</>
-                </Grid>
-                <Grid item={true} xs={12} md={5}>
-                    <>2</>
-                </Grid>
-            </Grid>
-            <></>
+            <Stack direction="row" alignItems="center" justifyContent="center" style={{minHeight: "100vh"}}>
+                <h1>&#60; Under development / &#62;</h1>
+            </Stack>
         </Page>
     );
 }

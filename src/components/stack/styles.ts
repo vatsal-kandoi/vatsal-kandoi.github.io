@@ -14,6 +14,7 @@ const Container = styled.div.attrs<{
     width: 100%;
     height: 100%;
     background-color: transparent;
+    box-sizing: border-box;
     display: flex;
     gap: ${props =>  ((props.$spacing / 6) * 6) + "rem" };
     align-items: ${props => props.$alignItems};

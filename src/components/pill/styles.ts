@@ -22,7 +22,7 @@ const Container = styled.div.attrs<{ $outlined?: boolean }>((props) => ({
     border-radius: 1rem;
     overflow: hidden;
     position: relative;
-
+    box-sizing: border-box;
     color: ${props => getFontColor(props.theme as Theme, props.$outlined || false)};
     border: none;
     background-color: ${props => getBackgroundColor(props.theme as Theme, props.$outlined || false)};

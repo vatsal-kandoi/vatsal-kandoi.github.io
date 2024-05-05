@@ -9,7 +9,9 @@ const Container = styled.div.attrs<{ $elevation?: number, $square?: boolean }>((
     $square: props.$square || false,
 }))`
     width: 100%;
+    box-sizing: border-box;
     height: 100%;
+    flex: 1;
     box-shadow: ${props => getBoxShadowForLayer(props.$elevation || 0)};
     background-color: ${props => (props.theme as Theme).palette.background};
     background-image: ${props => getBackgroundImageForLayer(props.$elevation || 0, (props.theme as Theme).mode)};

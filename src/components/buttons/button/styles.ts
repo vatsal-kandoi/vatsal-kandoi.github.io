@@ -3,6 +3,7 @@ import { hexToRGB } from "../../../utils/themes";
 import { Theme } from "../../../interfaces";
 
 const Container = styled.button`
+    box-sizing: border-box;
     cursor: pointer;
     padding: 0.3rem 0.5rem;
     border-radius: 0.25rem;

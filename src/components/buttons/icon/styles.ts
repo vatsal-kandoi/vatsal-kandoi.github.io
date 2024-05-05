@@ -22,6 +22,7 @@ const IconContainer = styled.div.attrs<{ $size?: "small" | "medium" | "large" }>
 `
 
 const Container = styled.button`
+    box-sizing: border-box;
     cursor: pointer;
     padding: 0.3rem 0.5rem;
     border-radius: 50%;

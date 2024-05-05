@@ -23,7 +23,7 @@ export function normalizeBreakPoints(xs: width, sm: width, md: width, lg: width,
         xl: 100,
     };
 
-    new_breakpoints.xs = (xs === undefined) ? 100 : xs;
+    new_breakpoints.xs = (xs === undefined) ? 100 : convertToPercentage(xs);
     new_breakpoints.sm = (sm === undefined) ? new_breakpoints.xs : convertToPercentage(sm);
     new_breakpoints.md = (md === undefined) ? new_breakpoints.sm : convertToPercentage(md);
     new_breakpoints.lg = (lg === undefined) ? new_breakpoints.md : convertToPercentage(lg);
