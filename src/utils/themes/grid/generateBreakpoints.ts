@@ -1,4 +1,3 @@
-import { css } from "styled-components";
 import { Breakpoints, Theme } from "../../../interfaces";
 
 /**
