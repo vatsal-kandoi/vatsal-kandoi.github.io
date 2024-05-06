@@ -13,8 +13,10 @@ const GridContainer = styled.div.attrs<{
     background-color: transparent;
     display: flex;
     gap: ${props =>  ((props.$spacing / 6) * 6) + "rem" };
-    flex-wrap: wrap;
+    flex-wrap: wrap;    
     flex-direction: row;
+    flex: 1;
+    height: "auto";
 `;
 
 const GridItem = styled.div.attrs<{ 
@@ -33,9 +35,10 @@ const GridItem = styled.div.attrs<{
     height: 100%;
     box-sizing: border-box;
     background-color: transparent;
-    display: block;
+    display: flex;
     flex: 1;
-    ${props => generateBreakpoints(props.theme as Theme, "max-width", {
+    height: auto;
+    ${props => generateBreakpoints(props.theme as Theme, "min-width", {
         xs: `${props.$xs}%`,
         sm: `${props.$sm}%`,
         md: `${props.$md}%`,

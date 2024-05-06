@@ -12,7 +12,7 @@ const Container = styled.div.attrs<{
     $spacing: props.$spacing || 0,
 }))`
     width: 100%;
-    height: 100%;
+    height: auto;
     background-color: transparent;
     box-sizing: border-box;
     display: flex;
@@ -20,6 +20,7 @@ const Container = styled.div.attrs<{
     align-items: ${props => props.$alignItems};
     justify-content: ${props => props.$justifyContent};
     flex-direction: ${props => props.$direction};
+    flex: 1;
 `
 
 export { Container };
