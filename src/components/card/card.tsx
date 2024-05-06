@@ -18,10 +18,11 @@ interface ICardProps {
 const Card: React.FC<ICardProps> & CardOptions = (props) => {
     const {children} = props;
     return (
-        <Layer elevation={1} square={false}>
+        <Layer elevation={1} square={false} style={{ padding: "1.5rem" }}>
             <Stack direction="column"
                     alignItems="flex-start"
-                    justifyContent="start">
+                    justifyContent="start"
+                    style={{ gap: "0.5rem" }}>
                 {children}
             </Stack>
         </Layer>

@@ -13,7 +13,7 @@ const Layer: React.FC<ILayerProps> = (props) => {
     const { elevation, children, square, ...remainingProps } = props;
 
     return (
-        <Container $elevation={elevation || 0} $square={square || false} {...remainingProps}>
+        <Container $elevation={elevation || 0} $square={(square !== undefined) ? square : true} {...remainingProps}>
             {children || <></>}
         </Container>
     );
