@@ -1,14 +1,19 @@
 import React from "react";
-import Page from "../base/page";
-import Stack from "../../components/stack/stack";
+import Landing from "../../components/sections/landing";
+import Experience from "../../components/sections/jobs";
+import Education from "../../components/sections/education";
+import Contact from "../../components/sections/contact";
+import Page from "../../components/layout/page";
+
 
 const Home: React.FC = () => {
 
     return (
         <Page>
-            <Stack direction="row" alignItems="center" justifyContent="center" style={{minHeight: "100vh"}}>
-                <h1>&#60; Under development / &#62;</h1>
-            </Stack>
+            <Landing />
+            <Experience />
+            <Education />
+            <Contact />
         </Page>
     );
 }
