@@ -5,6 +5,7 @@ import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import Header from "./header";
 import AnchorIcon from "../base/anchor-icon";
+import DataProviderContext from "../../contexts/dataprovider";
 
 const Container = styled.div`
     display: flex; 
@@ -29,26 +30,29 @@ const SocialIcons = styled.div`
 
 const Contact: React.FC = () => {
 
+    const {about} = React.useContext(DataProviderContext);
+    
     return (
+        (about !== null) ? 
         <>
             <Header centered={true} heading="Say Hi!" />
             <Container>
                 <ContactDetails>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet ratione quidem id eligendi ipsam quasi tempore quo, optio suscipit molestiae aspernatur similique natus! Ipsum, quidem! Sint maiores reprehenderit iusto delectus.
+                    {about.catchy_contact_me_description}
                 </ContactDetails>
                 <SocialIcons>
-                    <AnchorIcon href="">
+                    <AnchorIcon href={about.linkedIn} target="_blank">
                         <FontAwesomeIcon icon={faLinkedinIn} />
                     </AnchorIcon>
-                    <AnchorIcon href="">
+                    <AnchorIcon href={about.github} target="_blank">
                         <FontAwesomeIcon icon={faGithub} />                
                     </AnchorIcon>
-                    <AnchorIcon href="">
+                    <AnchorIcon href={`mailto:${about.email}`} target="_blank">
                         <FontAwesomeIcon icon={faEnvelope} />
                     </AnchorIcon>
                 </SocialIcons>
             </Container>
-        </>
+        </> : null
     );
 }
 

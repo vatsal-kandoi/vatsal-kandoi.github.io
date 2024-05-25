@@ -3,8 +3,9 @@ import styled from "styled-components";
 import Header from "./header";
 import Tab from "../base/tabs";
 import Card from "../base/card";
-import { Theme } from "../../interfaces";
+import { IEducation, Theme } from "../../interfaces";
 import Layer from "../base/layer";
+import DataProviderContext from "../../contexts/dataprovider";
 
 const List= styled.ul`
     display: flex;
@@ -25,21 +26,13 @@ const Bullets= styled.ul`
     }
 `
 
-interface IEducation {
-    degree_name: string; 
-    college_name: string; 
-    start_date: string; 
-    end_date: string; 
-    bullets: string[];
-}
-
 const renderEducationCard = ({ degree_name, college_name, start_date, end_date, bullets }: IEducation) => {
     return (
         <Card style={{ padding: "20px 20px" }}>
             <Card.Header>{degree_name}</Card.Header>
             <Card.SubHeader>
                 <div>{college_name}</div>
-                <div>{start_date} - {end_date}</div>
+                <div>{start_date.toLocaleDateString('en-us', { year:"numeric", month:"long" })} - {(end_date === "present") ? end_date : end_date.toLocaleDateString('en-us', { year:"numeric", month:"long" })}</div>
             </Card.SubHeader>
             <Card.Content>
                 <Bullets>
@@ -52,35 +45,24 @@ const renderEducationCard = ({ degree_name, college_name, start_date, end_date, 
 
 const Education: React.FC = () => {
 
-    const educations = [{
-        "degree_name": "B Tech. Electronics & Commnucation Engg",
-        "college_name": "Vellore Institute of Technology, Vellore",
-        "start_date": "18th January, 2023",
-        "end_date": "present",
-        "bullets": [
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt eum nobis culpa sunt adipisci eligendi quisquam laborum dolores omnis reiciendis! Iure, porro nobis. Modi sapiente odio tempora nemo facilis id.",
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt eum nobis culpa sunt adipisci eligendi quisquam laborum dolores omnis reiciendis! Iure, porro nobis. Modi sapiente odio tempora nemo facilis id.",
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt eum nobis culpa sunt adipisci eligendi quisquam laborum dolores omnis reiciendis! Iure, porro nobis. Modi sapiente odio tempora nemo facilis id.",
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt eum nobis culpa sunt adipisci eligendi quisquam laborum dolores omnis reiciendis! Iure, porro nobis. Modi sapiente odio tempora nemo facilis id.",
-        ]
-    },]
+    const {education} = React.useContext(DataProviderContext);
 
     return (
+        (education !== null) ?
         <>
             <Header index={1} heading="Education" id="education" />
             <List>
-                {educations.map((education) => {
+                {education.map((ed) => {
                     return (
                         <li>
                             <Layer elevation={1} rounded={false}>
-                                {renderEducationCard(education)}
+                                {renderEducationCard(ed)}
                             </Layer>
                         </li>
                     )
                 })}
             </List>
-        </>
-
+        </> : null
     );
 }
 

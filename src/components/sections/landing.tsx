@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import AnchorIcon from "../base/anchor-icon";
 import Button from "../base/button";
+import DataProviderContext from "../../contexts/dataprovider";
 
 const Container = styled.div`
     display: flex;
@@ -72,28 +73,30 @@ const LeftIconContainer = styled.div`
 
 
 const Landing: React.FC = () => {
+    const {about} = React.useContext(DataProviderContext);
     
     return (
-        <Container>
-            <h1>Vatsal Kandoi</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quisquam vero magni nisi sint vel corporis numquam eius nostrum minima dolores nam omnis culpa voluptatem, autem laborum beatae aperiam alias.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat accusantium facilis nemo cumque consequatur aperiam ut laudantium similique molestias, error neque soluta tempora iusto itaque illo vitae, architecto nihil quidem.</p>
-            <ButtonGroup>
-                <Button>Ping me!</Button>
-                <OutlinedButton variant="secondary">Resume</OutlinedButton>
-            </ButtonGroup>
-                <LeftIconContainer>
-                    <AnchorIcon href="">
-                        <FontAwesomeIcon icon={faLinkedinIn} />
-                    </AnchorIcon>
-                    <AnchorIcon href="">
-                        <FontAwesomeIcon icon={faGithub} />
-                    </AnchorIcon>
-                    <AnchorIcon href="">
-                        <FontAwesomeIcon icon={faEnvelope} />
-                    </AnchorIcon>
-                </LeftIconContainer>
-        </Container>
+        (about !== null) ? (
+            <Container>
+                <h1>{about.name}</h1>
+                {about.about.map((info) => <p>{info}</p>)}
+                <ButtonGroup>
+                    <Button>Ping me!</Button>
+                    <OutlinedButton variant="secondary">Resume</OutlinedButton>
+                </ButtonGroup>
+                    <LeftIconContainer>
+                        <AnchorIcon href={about?.linkedIn}  target="_blank">
+                            <FontAwesomeIcon icon={faLinkedinIn} />
+                        </AnchorIcon>
+                        <AnchorIcon href={about?.github} target="_blank">
+                            <FontAwesomeIcon icon={faGithub} />
+                        </AnchorIcon>
+                        <AnchorIcon href={`mailto:${about?.email}`} target="_blank">
+                            <FontAwesomeIcon icon={faEnvelope} />
+                        </AnchorIcon>
+                    </LeftIconContainer>
+            </Container>
+        ) : null
     );
 }
 
