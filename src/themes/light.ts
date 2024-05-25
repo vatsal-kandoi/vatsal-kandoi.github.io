@@ -5,13 +5,13 @@ const LIGHT_THEME: Theme = {
     ...BASE_THEME,
     mode: Mode.LIGHT,
     palette: {
-        primary: "#6200EE",
-        primary_variant: "#3700B3",
+        primary: "#03AED2",
+        primary_variant: "#68D2E8",
         secondary: "#03DAC6",
-        secondary_variant: "#018789",
+        secondary_variant: "#FEEFAD",
         background: "#FFFFFF",
         background_contrast: "#121212",
-        error: "B00020",
+        error: "#B00020",
         text: { 
             primary: "#FFFFFF",
             secondary: "#000000",

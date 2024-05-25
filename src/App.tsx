@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { ThemeProvider } from "styled-components";
-import ThemeProviderContext from "./contexts/themeprovider";
-import useThemeProvider from "./hooks/themeprovider";
+import useThemeProvider from './hooks/themeprovider';
+import ThemeProviderContext from './contexts/themeprovider';
 import Home from './views/home';
+import { BrowserRouter } from 'react-router-dom'
 
 const App: React.FC<{}> = () => {
   const {themeContextValue, theme} = useThemeProvider();
@@ -10,7 +11,9 @@ const App: React.FC<{}> = () => {
   return (
       <ThemeProviderContext.Provider value={themeContextValue}>
         <ThemeProvider theme={theme}>
-          <Home></Home>
+          <BrowserRouter>
+            <Home></Home>
+          </BrowserRouter>
         </ThemeProvider>
       </ThemeProviderContext.Provider>
   );
